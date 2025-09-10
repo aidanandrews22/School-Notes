@@ -1,0 +1,16 @@
+\contentsline {section}{\numberline {1}Lecture 2: Quantum Information Theory}{3}{}%
+\contentsline {subsection}{\numberline {1.1}Axiom I: The State Space Axiom and Density Operators}{3}{}%
+\contentsline {subsection}{\numberline {1.2}Gauss's Law in Differential Form}{3}{}%
+\contentsline {section}{\numberline {2}Physics Math Examples Reference}{4}{}%
+\contentsline {subsection}{\numberline {2.1}Vector Calculus}{4}{}%
+\contentsline {subsubsection}{\numberline {2.1.1}Vector Operations}{4}{}%
+\contentsline {subsubsection}{\numberline {2.1.2}Differential Operators}{4}{}%
+\contentsline {subsection}{\numberline {2.2}Line Integrals and Path Integrals}{4}{}%
+\contentsline {subsection}{\numberline {2.3}Surface and Volume Integrals}{5}{}%
+\contentsline {subsection}{\numberline {2.4}Differential Equations}{5}{}%
+\contentsline {subsection}{\numberline {2.5}Complex Numbers and Phasors}{5}{}%
+\contentsline {subsection}{\numberline {2.6}Series and Summations}{6}{}%
+\contentsline {subsection}{\numberline {2.7}Coordinate Systems}{6}{}%
+\contentsline {subsection}{\numberline {2.8}Special Functions}{6}{}%
+\contentsline {subsection}{\numberline {2.9}Matrix Operations}{7}{}%
+\contentsline {subsection}{\numberline {2.10}Statistical Physics}{7}{}%

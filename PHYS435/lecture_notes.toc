@@ -1,0 +1,35 @@
+\contentsline {section}{\numberline {1}Lecture 2: Gauss's Law}{3}{}%
+\contentsline {subsection}{\numberline {1.1}Gauss's Law}{3}{}%
+\contentsline {subsection}{\numberline {1.2}Gauss's Law in Differential Form}{3}{}%
+\contentsline {section}{\numberline {2}Lecture 3: The curl of $\vec {E}(\nabla \times \vec {E})$}{3}{}%
+\contentsline {subsection}{\numberline {2.1}Problem 2.18 Griffiths}{3}{}%
+\contentsline {subsection}{\numberline {2.2}Practice using the differential form of Gauss's Law}{4}{}%
+\contentsline {section}{\numberline {3}Lecture 4: Electric Potential}{5}{}%
+\contentsline {subsection}{\numberline {3.1}Electric Potential}{5}{}%
+\contentsline {subsection}{\numberline {3.2}Potential}{6}{}%
+\contentsline {subsection}{\numberline {3.3}Poisson's Equation}{6}{}%
+\contentsline {section}{\numberline {4}Lecture 5: Electrostatic Boundary Conditions}{7}{}%
+\contentsline {subsection}{\numberline {4.1}Line Charge}{8}{}%
+\contentsline {subsection}{\numberline {4.2}Spherical Shell}{9}{}%
+\contentsline {subsection}{\numberline {4.3}Sheet of Charge}{10}{}%
+\contentsline {subsubsection}{\numberline {4.3.1}Loop}{10}{}%
+\contentsline {subsubsection}{\numberline {4.3.2}General Statement}{10}{}%
+\contentsline {section}{\numberline {5}Lecture 6: Electrostatic Energy}{11}{}%
+\contentsline {subsection}{\numberline {5.1}Recap: Boundary Conditions}{11}{}%
+\contentsline {subsection}{\numberline {5.2}Work and Potential Energy}{11}{}%
+\contentsline {subsection}{\numberline {5.3}Energy in Discrete Charge Arrangements}{11}{}%
+\contentsline {subsection}{\numberline {5.4}Energy in Continuous Charge Distributions}{12}{}%
+\contentsline {section}{\numberline {6}Lecture 7: Perfect Conductors}{13}{}%
+\contentsline {section}{\numberline {7}Common Math}{14}{}%
+\contentsline {subsection}{\numberline {7.1}Vector Calculus}{14}{}%
+\contentsline {subsubsection}{\numberline {7.1.1}Vector Operations}{14}{}%
+\contentsline {subsubsection}{\numberline {7.1.2}Differential Operators}{14}{}%
+\contentsline {subsection}{\numberline {7.2}Line Integrals and Path Integrals}{14}{}%
+\contentsline {subsection}{\numberline {7.3}Surface and Volume Integrals}{15}{}%
+\contentsline {subsection}{\numberline {7.4}Differential Equations}{15}{}%
+\contentsline {subsection}{\numberline {7.5}Complex Numbers and Phasors}{15}{}%
+\contentsline {subsection}{\numberline {7.6}Series and Summations}{16}{}%
+\contentsline {subsection}{\numberline {7.7}Coordinate Systems}{16}{}%
+\contentsline {subsection}{\numberline {7.8}Special Functions}{16}{}%
+\contentsline {subsection}{\numberline {7.9}Matrix Operations}{17}{}%
+\contentsline {subsection}{\numberline {7.10}Statistical Physics}{17}{}%

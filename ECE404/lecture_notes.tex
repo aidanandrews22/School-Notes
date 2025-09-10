@@ -1,0 +1,333 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb, bm}
+\usepackage{braket}
+
+% Enhanced packages for better document structure
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{mdframed}
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{tikz} % Added for circuit diagrams
+
+% Set better margins
+\geometry{margin=1in}
+
+% Configure theorem-like environments
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+% Define a nice box for important concepts
+\newmdenv[
+  linewidth=0.5pt,
+  skipabove=1em,
+  skipbelow=1em,
+  backgroundcolor=gray!10,
+  innerleftmargin=5pt,
+  innerrightmargin=5pt,
+  innertopmargin=5pt,
+  innerbottommargin=5pt
+]{conceptbox}
+
+% Configure section formatting for chapters
+\titleformat{\section}
+  {\LARGE\bfseries}{\thesection.}{1em}{\MakeUppercase}
+\titlespacing*{\section}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+
+% Configure subsection and subsubsection formatting
+\titleformat{\subsection}
+  {\Large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}
+  {\large\bfseries}{\thesubsubsection}{1em}{}
+
+% Configure spacing
+\titlespacing*{\subsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\titlespacing*{\subsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+% Configure list spacing
+\setlist{itemsep=0.5em}
+
+% Configure TOC depth and formatting
+\setcounter{tocdepth}{3}
+\renewcommand{\cftsecfont}{\Large\bfseries}
+\renewcommand{\cftsecpagefont}{\bfseries}
+\renewcommand{\cftsubsecindent}{2em}
+\renewcommand{\cftsubsubsecindent}{4em}
+
+\title{Quantum Information Theory}
+\author{ECE 404}
+\date{Fall 2025}
+
+\begin{document}
+\maketitle
+
+\newpage
+\tableofcontents
+\newpage
+
+\section{Lecture 2: Quantum Information Theory}
+\subsubsection*{August 27, 2025}
+
+\subsection{Axiom I: The State Space Axiom and Density Operators}
+\begin{conceptbox}
+- The starting point in formulating quantum mechanics is the state space axiom.
+
+It consists of two parts:
+\begin{itemize}
+    \item Every quantum system is represented by a complex Hilbert space $\mathcal{H}$ called state space.
+    \item States of the system are represented by trace-one positive semi-definite operators acting on $\mathcal{H}$ called density operators. The set of all density operators is denoted by $\mathcal{D}(\mathcal{H})$.
+\end{itemize} 
+\end{conceptbox}
+
+\subsection{Gauss's Law in Differential Form}
+\begin{conceptbox}
+The divergence of the electric field is proportional to the charge density.
+\begin{align*}
+    \oint_C v(\vec{r}) \cdot d\vec{a} = \int_v (\mathcal{r}\cdot\vec{v}(\vec{r}))d\tau \\
+    \vec{v}(\vec{r}) = \text{any differentiable vector field} \\
+    \mathcal{r}\cdot\vec{v} = \text{divergence} = \frac{\partial v_x}{\partial x} + \frac{\partial v_y}{\partial y} + \frac{\partial v_z}{\partial z} \\
+    \text{Apply to Gauss's Law}: \\
+    \oint \vec{E} \cdot d\vec{a} = \int_v (\mathcal{r}\cdot\vec{E}(\vec{r}))d\tau = \frac{Q_{enc}}{\epsilon_0}, \text{ } Q_{enc} = \int_v \rho(\vec{r})d\tau \\
+    \int_v(\mathcal{r}\cdot\vec{E})d\tau = \int_v(\rho(\vec{r})/\epsilon_0)d\tau \\
+    \nabla\cdot\vec{E}(\vec{r}) = \frac{\rho(\vec{r})}{\epsilon_0} \\
+    \text{Divergence Identity: }\\
+    \mathcal{r}_r\cdot(\frac{\vec{r}}{r^2}) = 4\pi\delta^3(\vec{r}) \\
+\end{align*}
+\end{conceptbox}
+
+\newpage
+\section{Physics Math Examples Reference}
+\subsubsection*{Common Mathematical Notation in Physics}
+
+\subsection{Vector Calculus}
+
+\subsubsection{Vector Operations}
+\begin{example}[Vector Dot Product]
+The dot product of two vectors:
+\begin{align*}
+    \vec{A} \cdot \vec{B} &= A_x B_x + A_y B_y + A_z B_z \\
+    &= |\vec{A}||\vec{B}|\cos\theta
+\end{align*}
+\end{example}
+
+\begin{example}[Vector Cross Product]
+The cross product in component form:
+\begin{align*}
+    \vec{A} \times \vec{B} &= \begin{vmatrix}
+        \hat{i} & \hat{j} & \hat{k} \\
+        A_x & A_y & A_z \\
+        B_x & B_y & B_z
+    \end{vmatrix} \\
+    &= (A_y B_z - A_z B_y)\hat{i} + (A_z B_x - A_x B_z)\hat{j} + (A_x B_y - A_y B_x)\hat{k}
+\end{align*}
+\end{example}
+
+\subsubsection{Differential Operators}
+\begin{example}[Gradient]
+The gradient of a scalar function:
+\begin{align*}
+    \nabla f &= \frac{\partial f}{\partial x}\hat{i} + \frac{\partial f}{\partial y}\hat{j} + \frac{\partial f}{\partial z}\hat{k} \\
+    &= \left(\frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z}\right)f
+\end{align*}
+\end{example}
+
+\begin{example}[Divergence]
+The divergence of a vector field:
+\begin{align*}
+    \nabla \cdot \vec{F} &= \frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial z}
+\end{align*}
+\end{example}
+
+\begin{example}[Curl]
+The curl of a vector field:
+\begin{align*}
+    \nabla \times \vec{F} &= \begin{vmatrix}
+        \hat{i} & \hat{j} & \hat{k} \\
+        \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
+        F_x & F_y & F_z
+    \end{vmatrix}
+\end{align*}
+\end{example}
+
+\subsection{Line Integrals and Path Integrals}
+
+\begin{example}[Line Integral of a Vector Field]
+Work done by a force along a path:
+\begin{align*}
+    W &= \int_C \vec{F} \cdot d\vec{r} \\
+    &= \int_a^b \vec{F}(\vec{r}(t)) \cdot \frac{d\vec{r}}{dt} dt
+\end{align*}
+where $\vec{r}(t)$ parametrizes the curve $C$ from $t=a$ to $t=b$.
+\end{example}
+
+\begin{example}[Line Integral of a Scalar Field]
+Integral of a scalar function along a curve:
+\begin{align*}
+    \int_C f(x,y,z) \, ds &= \int_a^b f(\vec{r}(t)) \left|\frac{d\vec{r}}{dt}\right| dt
+\end{align*}
+\end{example}
+
+\begin{example}[Closed Path Integral]
+Circulation around a closed loop:
+\begin{align*}
+    \oint_C \vec{F} \cdot d\vec{r} = \iint_S (\nabla \times \vec{F}) \cdot \hat{n} \, dS
+\end{align*}
+This is Stokes' theorem.
+\end{example}
+
+\subsection{Surface and Volume Integrals}
+
+\begin{example}[Surface Integral]
+Flux through a surface:
+\begin{align*}
+    \Phi &= \iint_S \vec{F} \cdot \hat{n} \, dS \\
+    &= \iint_S \vec{F} \cdot \frac{\vec{r}_u \times \vec{r}_v}{|\vec{r}_u \times \vec{r}_v|} |\vec{r}_u \times \vec{r}_v| \, du \, dv
+\end{align*}
+where $\vec{r}(u,v)$ parametrizes the surface $S$.
+\end{example}
+
+\begin{example}[Volume Integral]
+Integral over a volume:
+\begin{align*}
+    \iiint_V f(x,y,z) \, dV &= \iiint_V f(x,y,z) \, dx \, dy \, dz
+\end{align*}
+\end{example}
+
+\subsection{Differential Equations}
+
+\begin{example}[First-Order Linear ODE]
+\begin{align*}
+    \frac{dy}{dx} + P(x)y &= Q(x) \\
+    \text{Solution: } y &= e^{-\int P(x)dx}\left[\int Q(x)e^{\int P(x)dx}dx + C\right]
+\end{align*}
+\end{example}
+
+\begin{example}[Second-Order Linear ODE with Constant Coefficients]
+\begin{align*}
+    \frac{d^2y}{dx^2} + a\frac{dy}{dx} + by &= f(x) \\
+    \text{Characteristic equation: } r^2 + ar + b &= 0
+\end{align*}
+\end{example}
+
+\begin{example}[Wave Equation]
+\begin{align*}
+    \frac{\partial^2 u}{\partial t^2} &= c^2\nabla^2 u \\
+    \frac{\partial^2 u}{\partial t^2} &= c^2\left(\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2}\right)
+\end{align*}
+\end{example}
+
+\subsection{Complex Numbers and Phasors}
+
+\begin{example}[Complex Exponential]
+Euler's formula and complex representation:
+\begin{align*}
+    e^{i\theta} &= \cos\theta + i\sin\theta \\
+    z &= re^{i\theta} = r(\cos\theta + i\sin\theta)
+\end{align*}
+\end{example}
+
+\begin{example}[Phasor Notation]
+AC voltage representation:
+\begin{align*}
+    V(t) &= V_0\cos(\omega t + \phi) \\
+    \tilde{V} &= V_0e^{i\phi} \quad \text{(phasor)}
+\end{align*}
+\end{example}
+
+\subsection{Series and Summations}
+
+\begin{example}[Taylor Series]
+\begin{align*}
+    f(x) &= f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \cdots \\
+    &= \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}(x-a)^n
+\end{align*}
+\end{example}
+
+\begin{example}[Fourier Series]
+\begin{align*}
+    f(x) &= \frac{a_0}{2} + \sum_{n=1}^{\infty} \left[a_n\cos\left(\frac{n\pi x}{L}\right) + b_n\sin\left(\frac{n\pi x}{L}\right)\right] \\
+    a_n &= \frac{1}{L}\int_{-L}^L f(x)\cos\left(\frac{n\pi x}{L}\right)dx \\
+    b_n &= \frac{1}{L}\int_{-L}^L f(x)\sin\left(\frac{n\pi x}{L}\right)dx
+\end{align*}
+\end{example}
+
+\subsection{Coordinate Systems}
+
+\begin{example}[Spherical Coordinates]
+\begin{align*}
+    x &= r\sin\theta\cos\phi \\
+    y &= r\sin\theta\sin\phi \\
+    z &= r\cos\theta \\
+    dV &= r^2\sin\theta \, dr \, d\theta \, d\phi
+\end{align*}
+\end{example}
+
+\begin{example}[Cylindrical Coordinates]
+\begin{align*}
+    x &= \rho\cos\phi \\
+    y &= \rho\sin\phi \\
+    z &= z \\
+    dV &= \rho \, d\rho \, d\phi \, dz
+\end{align*}
+\end{example}
+
+\subsection{Special Functions}
+
+\begin{example}[Dirac Delta Function]
+\begin{align*}
+    \delta(x) &= \begin{cases}
+        \infty & \text{if } x = 0 \\
+        0 & \text{if } x \neq 0
+    \end{cases} \\
+    \int_{-\infty}^{\infty} \delta(x) \, dx &= 1 \\
+    \int_{-\infty}^{\infty} f(x)\delta(x-a) \, dx &= f(a)
+\end{align*}
+\end{example}
+
+\begin{example}[Heaviside Step Function]
+\begin{align*}
+    H(x) &= \begin{cases}
+        1 & \text{if } x > 0 \\
+        0 & \text{if } x < 0
+    \end{cases} \\
+    \frac{d}{dx}H(x) &= \delta(x)
+\end{align*}
+\end{example}
+
+\subsection{Matrix Operations}
+
+\begin{example}[Eigenvalue Problem]
+\begin{align*}
+    A\vec{v} &= \lambda\vec{v} \\
+    \det(A - \lambda I) &= 0
+\end{align*}
+\end{example}
+
+\begin{example}[Matrix Exponential]
+\begin{align*}
+    e^A &= \sum_{n=0}^{\infty} \frac{A^n}{n!} \\
+    &= I + A + \frac{A^2}{2!} + \frac{A^3}{3!} + \cdots
+\end{align*}
+\end{example}
+
+\subsection{Statistical Physics}
+
+\begin{example}[Boltzmann Distribution]
+\begin{align*}
+    P(E) &= \frac{1}{Z}e^{-\beta E} \\
+    Z &= \sum_i e^{-\beta E_i} \quad \text{(partition function)} \\
+    \beta &= \frac{1}{k_B T}
+\end{align*}
+\end{example}
+
+\begin{example}[Maxwell-Boltzmann Distribution]
+\begin{align*}
+    f(v) &= 4\pi v^2\left(\frac{m}{2\pi k_B T}\right)^{3/2}e^{-mv^2/(2k_B T)}
+\end{align*}
+\end{example}
+
+\end{document}
