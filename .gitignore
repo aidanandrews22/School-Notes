@@ -1,0 +1,30 @@
+# LaTeX intermediate and output files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.lot
+*.lof
+*.nav
+*.snm
+*.vrb
+
+# Generated files by editors
+*.xdv
+*.dvi
+*.ps
+
+# Other LaTeX temporary files
+*.gz
+*.brf
+*.idx
+*.ilg
+*.ind
+*.ist
