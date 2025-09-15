@@ -67,8 +67,9 @@
 
 \newpage
 \tableofcontents
-\newpage
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% New Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
 \section{Lecture 2: Gauss's Law}
 \subsubsection*{August 27, 2025}
 
@@ -138,6 +139,9 @@ For any closed loop,
 \oint \vec{E} \cdot d\vec{l} = 0
 \]
 \end{conceptbox}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% New Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 \section{Lecture 4: Electric Potential}
 \subsubsection*{September 3, 2025}
@@ -210,6 +214,8 @@ Stokes's Theorem states that:
     \vec{E}=-\nabla V, \text{Gauss's law} \nabla\cdot\vec{E}(\vec{r})=\frac{\rho(\vec{r})}{\epsilon_0} \rightarrow \nabla^2 V = \frac{\rho(\vec{r})}{\epsilon_0} + \text{Boundary conditions}
 \end{align*}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% New Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 \section{Lecture 5: Electrostatic Boundary Conditions}
 \subsubsection*{September 5, 2025 \\}
@@ -398,6 +404,8 @@ $=E^{''}_{above}l-E^{''}_{below}l=0$ $\rightarrow$ $E^{''}_{above}=E^{''}_{below
 \subsubsection{General Statement}
 $\vec{E}_{above}-\vec{E}_{below}=\frac{\sigma}{\epsilon_0}\hat{n}$, $\hat{n}$ is a unit vector defining the surface normal..
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% New Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 \section{Lecture 6: Electrostatic Energy}
 \subsubsection*{September 8, 2025}
@@ -493,32 +501,628 @@ For a point charge $q$:
 \textbf{Note:} The self-energy of a point charge is infinite, indicating the classical model breaks down at small scales.
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% New Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 \section{Lecture 7: Perfect Conductors}
 \subsubsection*{September 10, 2025}
-Recap: We defined the energy as being stored in the electric field $W=\frac{\epsilon_0}{2} \int E^2(\vec{r}) \, d\tau$ \\
-Note Superposition is not just adding the energy of each field $W_{total}=\frac{\epsilon_0}{2} \int E_1^2(\vec{r})+E_2^2(\vec{r}) \, d\tau=W_1+W_2+\frac{\epsilon_0}{2}\int E_1(\vec{r})\cdot E_2(\vec{r}) \, d\tau$ \\
-Materials can be characterized by how free charges are to move in that material. \\
-Insulator: charges are tightly bound to the atoms that form the material (ceramics, rubbery teflon). \\
-Conductor: charges are free to move, very weakly bound (gold, platinum, aluminum, salt water). \\
-Properties of conductors: \\
-1. $\vec{E}=0$ inside conductor at equilibrium. If electric field is present, the charges will move ($\vec{F}=q\vec{E}$) until the field is cancelled out. The net effect is that charges separate. \\
-2. $\rho(\vec{r})=0$ $\mathcal{r}\cdot\vec{E}=\frac{\rho}{\epsilon_0}=0 \rightarrow \rho=0$. This is called screening. \\
-3. if the conductor has net charge, it must lie at the surface. if $E=0$ inside the conductor, there is no place for the charge to be except for on the surface. \\
-4. A conductor is an equipotential. $V=-\int_a^b \vec{E} \cdot d\vec{l}=0 \rightarrow V(b)=V(a)$ potential everywhere is the same \\
-5. The electric field just outside conductor is perpendicular to the surface. \\
-6. If a conductor with an internal cavity is placed in an electric field, the field in the cavity is zero. \\
-7. If a charge is placed in the cavity, all spatial information is lost to those outside the conductor. \\
-Surface Charge:
-The boundary conditions we found tell us the perpendicular field outside of the conductor \\
-For a sheet charge $\vec{E}_{\text{above}}-\vec{E}_{\text{below}}=\frac{\sigma}{\epsilon_0}\hat{n}$ \\
-For a conductor $\vec{E}_{\text{below}}=0\rightarrow \vec{E}_{\text{above}}=\frac{\sigma}{\epsilon_0}\hat{n} \rightarrow \frac{\partial V}{\partial n}=\mathcal{r}\cdot\hat{n}$ \\
-Force on the conductor: \\
-Capacitance: \\
-$V=V_+-V_-$ \\
-$\mathcal{r}^2V=\frac{\rho}{\epsilon_0}$ \\
-$V \propto Q$ \\
 
+\subsection{Recap: Energy Superposition}
+\begin{conceptbox}
+Energy is stored in the electric field:
+\begin{align*}
+    W = \frac{\epsilon_0}{2} \int E^2(\vec{r}) \, d\tau
+\end{align*}
+For superposition, energy is not simply additive:
+\begin{align*}
+    W_{\text{total}} &= \frac{\epsilon_0}{2} \int [E_1(\vec{r}) + E_2(\vec{r})]^2 \, d\tau \\
+    &= W_1 + W_2 + \frac{\epsilon_0}{2}\int 2\vec{E}_1(\vec{r}) \cdot \vec{E}_2(\vec{r}) \, d\tau
+\end{align*}
+The cross term represents interaction energy between the fields.
+\end{conceptbox}
+
+\subsection{Material Classification}
+Materials can be characterized by how free charges are to move within them:
+
+\begin{itemize}
+    \item \textbf{Insulators}: Charges are tightly bound to atoms (ceramics, rubber, Teflon)
+    \item \textbf{Conductors}: Charges are free to move, weakly bound (gold, platinum, aluminum, salt water)
+\end{itemize}
+
+\subsection{Properties of Perfect Conductors}
+\begin{conceptbox}
+A perfect conductor in electrostatic equilibrium has seven fundamental properties:
+\end{conceptbox}
+
+\subsubsection{Property 1: Zero Internal Electric Field}
+\begin{align*}
+    \vec{E} = 0 \text{ inside conductor at equilibrium}
+\end{align*}
+
+If an electric field were present, charges would experience force $\vec{F} = q\vec{E}$ and move until the field is cancelled. The charges separate to create an internal field that exactly cancels the external field.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+    % External field lines
+    \foreach \y in {-2,-1.5,-1,-0.5,0.5,1,1.5,2} {
+        \draw[->, thick, blue] (-4,\y) -- (-2.2,\y);
+        \draw[->, thick, blue] (2.2,\y) -- (4,\y);
+    }
+    
+    % Conductor (ellipse)
+    \draw[thick, fill=gray!30] (0,0) ellipse (2 and 1.5);
+    \node at (0,0) {$\vec{E} = 0$};
+    
+    % Surface charges
+    \foreach \angle in {0,30,60,90,120,150,180,210,240,270,300,330} {
+        \coordinate (pos) at (\angle:2 and 1.5);
+        \fill[red] (pos) circle (0.08);
+        \ifnum\angle<180
+            \node[red] at ([shift=(\angle:0.3)] pos) {$-$};
+        \else
+            \node[red] at ([shift=(\angle:0.3)] pos) {$+$};
+        \fi
+    }
+    
+    \node[blue] at (-3,2.5) {$\vec{E}_{\text{ext}}$};
+    \node at (0,-2.5) {\textbf{Conductor in External Field}};
+\end{tikzpicture}
+\end{center}
+
+\subsubsection{Property 2: Zero Volume Charge Density}
+\begin{align*}
+    \rho(\vec{r}) = 0 \text{ inside conductor}
+\end{align*}
+
+From Gauss's law: $\nabla \cdot \vec{E} = \frac{\rho}{\epsilon_0}$. Since $\vec{E} = 0$ inside, we have $\rho = 0$. This is called \textbf{screening}.
+
+\subsubsection{Property 3: Surface Charge Distribution}
+If the conductor has net charge, it must reside entirely on the surface. Since $\vec{E} = 0$ inside, there is no mechanism to support volume charge density.
+
+\subsubsection{Property 4: Equipotential Surface}
+\begin{align*}
+    V = \text{constant throughout conductor}
+\end{align*}
+
+Since $\vec{E} = -\nabla V = 0$, the potential cannot vary within the conductor:
+\begin{align*}
+    V(b) - V(a) = -\int_a^b \vec{E} \cdot d\vec{l} = 0
+\end{align*}
+
+\subsubsection{Property 5: Perpendicular Surface Field}
+The electric field just outside the conductor surface is perpendicular to the surface. Any tangential component would cause surface charges to move, violating equilibrium.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+    % Conductor surface (curved)
+    \draw[thick, fill=gray!30] plot[smooth] coordinates {(-2,-1) (-1,0) (0,0.5) (1,0) (2,-1)};
+    
+    % Normal vectors at different points
+    \foreach \x/\y/\angle in {-1.5/-0.5/70, -0.5/0.25/100, 0.5/0.25/80, 1.5/-0.5/110} {
+        \draw[->, thick, red] (\x,\y) -- +(\angle:1) node[above] {$\vec{E}$};
+        \draw[dashed] (\x,\y) -- +(\angle+90:0.5);
+        \draw[dashed] (\x,\y) -- +(\angle-90:0.5);
+    }
+    
+    \node at (0,-1.8) {\textbf{E-field perpendicular to conductor surface}};
+\end{tikzpicture}
+\end{center}
+
+\subsubsection{Property 6: Faraday Cage Effect}
+A conductor with an internal cavity shields the cavity from external fields. The field inside the cavity is zero regardless of external conditions.
+
+\subsubsection{Property 7: Loss of Spatial Information}
+If a charge is placed inside a cavity within a conductor, observers outside the conductor cannot determine the position of the internal charge - only its magnitude affects the external field.
+
+\subsection{Surface Charge and Boundary Conditions}
+From our previous boundary condition analysis:
+\begin{align*}
+    \vec{E}_{\text{above}} - \vec{E}_{\text{below}} = \frac{\sigma}{\epsilon_0}\hat{n}
+\end{align*}
+
+For a conductor where $\vec{E}_{\text{below}} = 0$:
+\begin{conceptbox}
+The electric field just outside a conductor surface is:
+\begin{align*}
+    \vec{E}_{\text{surface}} = \frac{\sigma}{\epsilon_0}\hat{n}
+\end{align*}
+where $\sigma$ is the local surface charge density and $\hat{n}$ is the outward normal.
+\end{conceptbox}
+
+\subsection{Electrostatic Pressure and Forces}
+The electric field exerts a force on the surface charges of a conductor, creating an electrostatic pressure.
+
+\begin{example}[Force per unit area on conductor surface]
+Consider the force on a small patch of conductor surface with area $dA$ and charge $dq = \sigma \, dA$.
+
+The field acting on this charge is the average of the field just inside (zero) and just outside ($\sigma/\epsilon_0$):
+\begin{align*}
+    \vec{E}_{\text{avg}} &= \frac{1}{2}(0 + \frac{\sigma}{\epsilon_0}\hat{n}) = \frac{\sigma}{2\epsilon_0}\hat{n}
+\end{align*}
+
+The force per unit area (electrostatic pressure) is:
+\begin{align*}
+    \vec{P} = \sigma \vec{E}_{\text{avg}} = \frac{\sigma^2}{2\epsilon_0}\hat{n} = \frac{\epsilon_0 E^2}{2}\hat{n}
+\end{align*}
+
+This pressure always acts outward, trying to expand the conductor.
+\end{example}
+
+\subsection{Introduction to Capacitance}
+When we have two conductors at different potentials, we can define capacitance.
+
+\begin{conceptbox}
+For two conductors with charges $+Q$ and $-Q$ at potential difference $V$:
+\begin{align*}
+    C = \frac{Q}{V}
+\end{align*}
+Units: $[\text{Farad}] = \frac{\text{Coulomb}}{\text{Volt}}$
+
+Capacitance depends only on geometry and material properties, not on $Q$ or $V$.
+\end{conceptbox}
+
+The relationship $V \propto Q$ arises because:
+\begin{itemize}
+    \item Laplace's equation: $\nabla^2 V = 0$ in regions with $\rho = 0$
+    \item Boundary conditions: $V = \text{constant}$ on conductor surfaces
+    \item Linearity of Laplace's equation ensures $V \propto Q$
+\end{itemize}
+
+\begin{example}[Parallel plate capacitor preview]
+For two parallel plates with surface charge density $\pm\sigma$:
+\begin{align*}
+    E &= \frac{\sigma}{\epsilon_0} \\
+    V &= Ed = \frac{\sigma d}{\epsilon_0} \\
+    Q &= \sigma A \\
+    C &= \frac{Q}{V} = \frac{\sigma A}{\sigma d/\epsilon_0} = \frac{\epsilon_0 A}{d}
+\end{align*}
+\end{example}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% New Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{Lecture 8: Capacitance and Laplace's Equation}
+\subsubsection*{September 12, 2025}
+
+\subsection{Recap: Conductor Properties}
+From our study of conductors, we established:
+\begin{align*}
+    V &= V_+ - V_- \quad \text{(potential difference)} \\
+    \nabla^2 V &= -\frac{\rho}{\epsilon_0} \quad \text{(Poisson's equation)} \\
+    V &\propto Q \quad \text{(linear relationship)}
+\end{align*}
+
+\subsection{Capacitance}
+\begin{conceptbox}
+For two conductors with charges $\pm Q$ at potential difference $V$:
+\begin{align*}
+    C = \frac{Q}{V}
+\end{align*}
+Units: $[\text{Farad}] = \frac{\text{Coulomb}}{\text{Volt}}$
+
+Capacitance depends only on geometry and material properties, not on $Q$ or $V$.
+\end{conceptbox}
+
+\subsection{Parallel Plate Capacitor}
+\begin{example}[Parallel plate capacitor]
+Consider two parallel plates with area $A$, separation $d$, carrying charges $\pm Q$.
+
+\begin{center}
+\begin{minipage}{0.48\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.8]
+        % Bottom plate (-Q)
+        \draw[thick, fill=blue!20] (-2,-1) rectangle (2,-0.8);
+        \node at (0,-0.9) {$-Q$};
+        
+        % Top plate (+Q)
+        \draw[thick, fill=red!20] (-2,1) rectangle (2,0.8);
+        \node at (0,0.9) {$+Q$};
+        
+        % Electric field lines
+        \foreach \x in {-1.5,-1,-0.5,0,0.5,1,1.5} {
+            \draw[->, thick, blue] (\x,-0.8) -- (\x,0.8);
+        }
+        
+        % Distance label
+        \draw[<->, thick] (2.2,-0.8) -- (2.2,0.8) node[midway, right] {$d$};
+        
+        % Area label
+        \draw[<->, thick] (-2,-1.3) -- (2,-1.3) node[midway, below] {$A$};
+        
+        % Field magnitude
+        \node at (0,0) {$E = \frac{\sigma}{\epsilon_0}$};
+    \end{tikzpicture}
+\end{minipage}%
+\hfill
+\begin{minipage}{0.48\textwidth}
+    \vspace{0.5em}
+    \begin{align*}
+        &\text{Using Gauss's law:} \\
+        &\oint \vec{E} \cdot d\vec{A} = \frac{Q_{enc}}{\epsilon_0} \\
+        &E \cdot A = \frac{\sigma A}{\epsilon_0} \\
+        &E = \frac{\sigma}{\epsilon_0} = \frac{Q}{\epsilon_0 A} \\
+        &\\
+        &\text{Potential difference:} \\
+        &V = -\int \vec{E} \cdot d\vec{l} = Ed = \frac{Qd}{\epsilon_0 A} \\
+        &\\
+        &\text{Capacitance:} \\
+        &C = \frac{Q}{V} = \frac{\epsilon_0 A}{d}
+    \end{align*}
+\end{minipage}
+\end{center}
+\end{example}
+
+\subsection{Energy Stored in Capacitor}
+\begin{conceptbox}
+The energy stored in a capacitor can be calculated as:
+\begin{align*}
+    W &= \int V \, dq = \int_0^Q \frac{q}{C} \, dq = \frac{Q^2}{2C} \\
+    &= \frac{1}{2}CV^2 = \frac{1}{2}QV
+\end{align*}
+\end{conceptbox}
+
+\subsection{General Potential Calculations}
+For arbitrary charge configurations, we have two approaches:
+
+\subsubsection{High Symmetry Cases}
+When symmetry allows direct integration:
+\begin{align*}
+    V(\vec{r}) = \frac{1}{4\pi\epsilon_0} \int \frac{\rho(\vec{r}')}{|\vec{r} - \vec{r}'|} \, d\tau'
+\end{align*}
+
+\subsubsection{General Cases}
+When direct integration is difficult, solve Poisson's equation:
+\begin{align*}
+    \nabla^2 V(\vec{r}) = -\frac{\rho(\vec{r})}{\epsilon_0}
+\end{align*}
+
+\subsection{Example: Hemispherical Shell (Griffiths 2.48)}
+\begin{example}[Hemispherical shell potential difference]
+An inverted hemispherical bowl of radius $R$ carries uniform surface charge density $\sigma$. Find the potential difference between the "north pole" and the center.
+
+\begin{center}
+\begin{minipage}{0.48\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=1.2]
+        % Hemisphere
+        \draw[thick, fill=gray!20] (0,0) arc (180:0:1.5);
+        \draw[thick] (-1.5,0) -- (1.5,0);
+        
+        % North pole
+        \fill[red] (0,1.5) circle (0.08);
+        \node[red] at (0.2,1.7) {North pole};
+        
+        % Center
+        \fill[blue] (0,0) circle (0.08);
+        \node[blue] at (0.2,0.2) {Center};
+        
+        % Radius
+        \draw[<->, thick] (0,0) -- (1.5,0) node[midway, below] {$R$};
+        
+        % Surface element
+        \draw[thick, green] (0.8,0.6) -- (1.1,0.8);
+        \node[green] at (1.2,0.9) {$dA'$};
+        
+        % Distance vectors
+        \draw[->, thick, purple] (0,1.5) -- (0.8,0.6) node[midway, right] {$\vec{r} - \vec{r}'$};
+        \draw[->, thick, purple] (0,0) -- (0.8,0.6) node[midway, below] {$\vec{r}'$};
+    \end{tikzpicture}
+\end{minipage}%
+\hfill
+\begin{minipage}{0.48\textwidth}
+    \vspace{0.5em}
+    \begin{align*}
+        &V(\vec{r}) = \frac{1}{4\pi\epsilon_0} \int \frac{\sigma(\vec{r}')}{|\vec{r} - \vec{r}'|} \, dA' \\
+        &\\
+        &\text{At center: } |\vec{r} - \vec{r}'| = R \\
+        &V_{\text{center}} = \frac{1}{4\pi\epsilon_0} \int \frac{\sigma}{R} \, dA' \\
+        &= \frac{\sigma R}{2\epsilon_0} \\
+        &\\
+        &\text{At north pole: } |\vec{r} - \vec{r}'| = \sqrt{2}R\sqrt{1-\cos\theta} \\
+        &V_{\text{pole}} = \frac{\sigma R}{\sqrt{2}\epsilon_0} \\
+        &\\
+        &\Delta V = V_{\text{pole}} - V_{\text{center}} \\
+        &= \frac{\sigma R}{\epsilon_0}\left(\frac{1}{\sqrt{2}} - \frac{1}{2}\right) \\
+        &= \frac{\sigma R}{2\epsilon_0}(\sqrt{2} - 1)
+    \end{align*}
+\end{minipage}
+\end{center}
+\end{example}
+
+\subsection{Laplace's Equation}
+When $\rho = 0$ in a region, we have Laplace's equation:
+\begin{conceptbox}
+\begin{align*}
+    \nabla^2 V = 0
+\end{align*}
+In Cartesian coordinates:
+\begin{align*}
+    \frac{\partial^2 V}{\partial x^2} + \frac{\partial^2 V}{\partial y^2} + \frac{\partial^2 V}{\partial z^2} = 0
+\end{align*}
+\end{conceptbox}
+
+\subsection{Mean Value Theorem}
+\begin{theorem}[Mean Value Theorem for Potential]
+The potential at the center of a sphere is equal to the average potential over the surface of the sphere, provided there are no charges inside the sphere.
+\end{theorem}
+
+\begin{example}[Verification of mean value theorem]
+For a point charge $q$ outside a sphere of radius $R$:
+
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+    % Sphere
+    \draw[thick, fill=gray!20] (0,0) circle (1.5);
+    
+    % Point charge
+    \fill[red] (3,0) circle (0.1);
+    \node[red] at (3.2,0.2) {$q$};
+    
+    % Distance from charge to center
+    \draw[<->, thick] (0,0) -- (3,0) node[midway, above] {$z$};
+    
+    % Distance from charge to surface element
+    \draw[->, thick, blue] (3,0) -- (0.8,1.1) node[midway, right] {$\mathcal{r}$};
+    
+    % Surface element
+    \draw[thick, green] (0.8,1.1) -- (1.0,1.3);
+    \node[green] at (1.2,1.4) {$dA'$};
+    
+    % Angle
+    \draw[thick] (0,0) -- (0.8,1.1);
+    \draw[thick] (0,0) -- (3,0);
+    \node at (0.3,0.3) {$\theta$};
+\end{tikzpicture}
+\end{center}
+
+\begin{align*}
+    \mathcal{r} &= \sqrt{z^2 + R^2 - 2zR\cos\theta} \\
+    V_{\text{center}} &= \frac{q}{4\pi\epsilon_0 z} \\
+    V_{\text{ave}} &= \frac{1}{4\pi R^2} \int \frac{q}{4\pi\epsilon_0 \mathcal{r}} \, dA' \\
+    &= \frac{q}{4\pi\epsilon_0 z} = V_{\text{center}}
+\end{align*}
+
+This confirms the mean value theorem.
+\end{example}
+
+\subsection{Uniqueness Theorem}
+\begin{theorem}[Uniqueness of Solutions to Laplace's Equation]
+If a function $V$ satisfies Laplace's equation in a region and satisfies the boundary conditions on the surface of that region, then $V$ is unique.
+\end{theorem}
+
+This theorem is crucial because it means that if we find any solution to Laplace's equation that satisfies the boundary conditions, we have found the only solution.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% New Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{Lecture 9: The Uniqueness Theorem}
+\subsubsection*{September 15, 2025}
+
+\subsection{Recap: Properties of Laplace's Equation}
+From our previous study of Laplace's equation for finding potentials $\nabla^2 V = 0$, we established two key properties:
+
+\begin{conceptbox}
+Properties of solutions to Laplace's equation:
+\begin{enumerate}
+    \item \textbf{Mean Value Theorem}: The potential at any point equals the average potential over any sphere centered at that point:
+    \begin{align*}
+        V(\vec{r}) = \frac{1}{4\pi R^2}\oint V(\vec{r}') \, da'
+    \end{align*}
+    
+    \item \textbf{No Local Extrema}: $V(\vec{r})$ has no local maxima or minima in the interior - extrema occur only at boundaries.
+\end{enumerate}
+\end{conceptbox}
+
+To solve electrostatic problems, we need both Laplace's equation and appropriate boundary conditions.
+
+\subsection{The Uniqueness Theorem}
+
+\begin{theorem}[Uniqueness Theorem for Electrostatics]
+Given boundary conditions on a closed surface, there exists one and only one solution to Laplace's equation (or Poisson's equation) in the volume enclosed by that surface.
+\end{theorem}
+
+\subsubsection{Proof for Laplace's Equation}
+
+\textbf{Setup}: Consider a volume $V$ bounded by surface $S$, where we specify $V(\vec{r}) = f(\vec{r})$ on the boundary.
+
+\textbf{Proof by Contradiction}:
+Assume two different solutions $V_1$ and $V_2$ exist that both satisfy:
+\begin{align*}
+    \nabla^2 V_1 &= 0 \quad \text{in } V \\
+    \nabla^2 V_2 &= 0 \quad \text{in } V \\
+    V_1(\vec{r}) &= V_2(\vec{r}) = f(\vec{r}) \quad \text{on } S
+\end{align*}
+
+Define the difference: $V_3 = V_1 - V_2$
+
+Then:
+\begin{align*}
+    \nabla^2 V_3 &= \nabla^2(V_1 - V_2) = \nabla^2 V_1 - \nabla^2 V_2 = 0 - 0 = 0 \\
+    V_3(\vec{r}) &= V_1(\vec{r}) - V_2(\vec{r}) = f(\vec{r}) - f(\vec{r}) = 0 \quad \text{on } S
+\end{align*}
+
+Since $V_3$ satisfies Laplace's equation and equals zero on the boundary, and since Laplace's equation has no local extrema in the interior, $V_3$ must be zero everywhere in $V$.
+
+Therefore: $V_3 = 0 \Rightarrow V_1 = V_2$
+
+\subsubsection{Extension to Poisson's Equation}
+
+\begin{theorem}[Uniqueness for Poisson's Equation]
+The uniqueness theorem also applies to Poisson's equation: $\nabla^2 V = -\frac{\rho(\vec{r})}{\epsilon_0}$
+\end{theorem}
+
+\textbf{Proof}: If $V_1$ and $V_2$ are solutions to Poisson's equation with the same boundary conditions:
+\begin{align*}
+    \nabla^2 V_3 &= \nabla^2(V_1 - V_2) = -\frac{\rho}{\epsilon_0} - \left(-\frac{\rho}{\epsilon_0}\right) = 0
+\end{align*}
+
+The rest follows identically to the Laplace case.
+
+\subsection{Alternative Boundary Conditions}
+
+\begin{conceptbox}
+The uniqueness theorem applies to different types of boundary conditions:
+\begin{itemize}
+    \item \textbf{Dirichlet}: Specify $V(\vec{r})$ on the boundary surface $S$
+    \item \textbf{Neumann}: Specify $\frac{\partial V}{\partial n}$ on the boundary surface $S$  
+    \item \textbf{Conductor charges}: Specify total charges $Q_i$ on conductor surfaces
+\end{itemize}
+\end{conceptbox}
+
+\subsubsection{Uniqueness with Conductor Boundary Conditions}
+
+For conductors, we can specify total charges instead of potentials. Consider two electric fields $\vec{E}_1$ and $\vec{E}_2$ that satisfy:
+\begin{align*}
+    \nabla \cdot \vec{E}_1 &= \nabla \cdot \vec{E}_2 = \frac{\rho(\vec{r})}{\epsilon_0} \\
+    \oint_{S_i} \vec{E}_1 \cdot d\vec{a} &= \oint_{S_i} \vec{E}_2 \cdot d\vec{a} = \frac{Q_i}{\epsilon_0} \quad \text{for each conductor } i
+\end{align*}
+
+Define $\vec{E}_3 = \vec{E}_1 - \vec{E}_2$. Then:
+\begin{align*}
+    \nabla \cdot \vec{E}_3 &= 0 \\
+    \oint_{S_i} \vec{E}_3 \cdot d\vec{a} &= 0 \quad \text{for each conductor}
+\end{align*}
+
+Since conductors are equipotentials, $V_3 = V_1 - V_2$ is constant on each conductor surface.
+
+Using the vector identity and divergence theorem:
+\begin{align*}
+    \nabla \cdot (V_3 \vec{E}_3) &= V_3(\nabla \cdot \vec{E}_3) + \vec{E}_3 \cdot (\nabla V_3) \\
+    &= 0 - \vec{E}_3 \cdot \vec{E}_3 = -E_3^2
+\end{align*}
+
+Integrating over the volume:
+\begin{align*}
+    \int_V \nabla \cdot (V_3 \vec{E}_3) \, d\tau &= \oint_S V_3 \vec{E}_3 \cdot d\vec{a} = -\int_V E_3^2 \, d\tau
+\end{align*}
+
+Since $V_3$ is constant on each conductor surface and $\oint_{S_i} \vec{E}_3 \cdot d\vec{a} = 0$, the left side equals zero.
+
+Therefore: $E_3^2 = 0 \Rightarrow \vec{E}_3 = 0 \Rightarrow \vec{E}_1 = \vec{E}_2$
+
+\subsection{Method of Images}
+
+The uniqueness theorem enables powerful solution techniques like the method of images.
+
+\begin{example}[Point charge above grounded conducting plane]
+Consider a point charge $q$ at position $(0,0,d)$ above a grounded conducting plane at $z = 0$.
+
+\textbf{Boundary conditions}:
+\begin{itemize}
+    \item $V(x,y,0) = 0$ (grounded plane)
+    \item $V(\vec{r}) \to 0$ as $|\vec{r}| \to \infty$
+\end{itemize}
+
+\begin{center}
+\begin{minipage}{0.48\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=1.0]
+        % Coordinate system
+        \draw[->, thick] (-3,0) -- (3,0) node[right] {$x$};
+        \draw[->, thick] (0,-2.5) -- (0,3) node[above] {$z$};
+        
+        % Grounded plane
+        \draw[thick, blue, line width=3pt] (-2.5,0) -- (2.5,0);
+        \node[blue] at (-2.2,-0.3) {$V = 0$};
+        
+        % Real charge
+        \fill[red] (0,2) circle (0.1);
+        \node[red] at (0.3,2) {$+q$};
+        \node at (0.3,1.7) {$(0,0,d)$};
+        
+        % Image charge
+        \fill[blue] (0,-2) circle (0.1);
+        \node[blue] at (0.3,-2) {$-q$};
+        \node at (0.3,-2.3) {$(0,0,-d)$};
+        
+        % Distance markers
+        \draw[dashed] (0,0) -- (0,2);
+        \draw[dashed] (0,0) -- (0,-2);
+        \node at (-0.3,1) {$d$};
+        \node at (-0.3,-1) {$d$};
+        
+        % Field point
+        \fill[green] (1.5,1) circle (0.08);
+        \node[green] at (1.8,1) {$P$};
+        
+        % Distance vectors
+        \draw[->, purple] (0,2) -- (1.5,1) node[midway, above] {$\mathcal{r}_+$};
+        \draw[->, purple] (0,-2) -- (1.5,1) node[midway, below] {$\mathcal{r}_-$};
+    \end{tikzpicture}
+\end{minipage}%
+\hfill
+\begin{minipage}{0.48\textwidth}
+    \vspace{0.5em}
+    \textbf{Solution Strategy}:
+    
+    Place an image charge $-q$ at $(0,0,-d)$ (outside the region of interest).
+    
+    \textbf{Potential}:
+    \begin{align*}
+        V &= \frac{q}{4\pi\epsilon_0 \mathcal{r}_+} - \frac{q}{4\pi\epsilon_0 \mathcal{r}_-}
+    \end{align*}
+    
+    where:
+    \begin{align*}
+        \mathcal{r}_+ &= \sqrt{x^2+y^2+(z-d)^2} \\
+        \mathcal{r}_- &= \sqrt{x^2+y^2+(z+d)^2}
+    \end{align*}
+    
+    \textbf{Verification}:
+    \begin{align*}
+        V|_{z=0} &= \frac{q}{4\pi\epsilon_0\sqrt{x^2+y^2+d^2}} \\
+        &\quad - \frac{q}{4\pi\epsilon_0\sqrt{x^2+y^2+d^2}} = 0 \checkmark
+    \end{align*}
+\end{minipage}
+\end{center}
+
+\textbf{Final Solution}:
+\begin{conceptbox}
+\begin{align*}
+    V(x,y,z) = \frac{q}{4\pi\epsilon_0}\left[\frac{1}{\sqrt{x^2+y^2+(z-d)^2}} - \frac{1}{\sqrt{x^2+y^2+(z+d)^2}}\right]
+\end{align*}
+\end{conceptbox}
+
+The image charge $-q$ at $(0,0,-d)$ is called the \textbf{image charge}. It can only be placed outside the region where we're solving for the potential. The conductor acts like a mirror, creating the image charge to satisfy boundary conditions.
+\end{example}
+
+\subsection{Physical Interpretation}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.2]
+    % Draw the conducting plane
+    \draw[thick, fill=gray!20] (-3,0) rectangle (3,-0.2);
+    \node at (0,-0.5) {\textbf{Conducting Plane}};
+    
+    % Real charge and field lines above
+    \fill[red] (0,2) circle (0.08);
+    \node[red] at (0.3,2) {$+q$};
+    
+    % Draw field lines from charge to plane
+    \foreach \angle in {-60,-45,-30,-15,0,15,30,45,60} {
+        \draw[->, thick, blue] (0,2) -- ({2*sin(\angle)}, {2*cos(\angle)});
+    }
+    
+    % Surface charges on conductor
+    \foreach \x in {-2.5,-2,-1.5,-1,-0.5,0,0.5,1,1.5,2,2.5} {
+        \node at (\x,0.1) {$-$};
+    }
+    
+    % Induced charge distribution
+    \node at (0,-1) {\textbf{Induced negative charges}};
+    \node at (0,-1.3) {\textbf{screen the field inside}};
+\end{tikzpicture}
+\end{center}
+
+The method of images works because:
+\begin{itemize}
+    \item The conductor redistributes surface charge to maintain $V = 0$
+    \item The image charge mimics this redistribution effect
+    \item By uniqueness, this is the only possible solution
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% New Chapter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 \section{Common Math}
 \subsubsection*{}
