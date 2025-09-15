@@ -28,3 +28,4 @@
 *.ilg
 *.ind
 *.ist
+*.synctex(busy)
